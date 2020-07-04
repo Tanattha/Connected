@@ -1,0 +1,31 @@
+<% if logged_in? %>
+<% controller.redirect_to root_path %>
+<% end %>
+
+<div class="col-md-6 offset-md-3">
+
+  <h2>Log in</h2>
+  <hr>
+  <%= form_tag('/login', method: :post) do %>
+    <div class="form-group">
+      <%= label_tag(:user_name, "Username:") %>
+      <%= text_field_tag :user_name %>
+    </div>
+
+  <div class="form-group">
+      <%= label_tag(:password, "Password:") %>
+      <%= password_field_tag :password %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Log in", class: 'btn btn-success' %>
+    </div>
+  <% end %> 
+  <br>
+
+Not a member yet?  <%= link_to "Sign Up", new_user_path %> 
+
+
+<br>
+
+<%= link_to 'Log in with Google!', '/auth/google_oauth2' %>

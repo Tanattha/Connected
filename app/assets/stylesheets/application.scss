@@ -1,0 +1,135 @@
+
+/* ...
+*= require_self
+*= require_tree .
+*/
+
+@import "actiontext";
+
+@import "../../../node_modules/@fortawesome/fontawesome-free/css/all";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+@import "../../../node_modules/bootswatch/dist/flatly/bootstrap.min";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.head-bar {
+  font-size: x-large;
+  color: #3498DB;
+  
+}
+
+.left-bar-color {
+  background-color: #0C6980;
+  color: white;
+}
+
+.bar-color {
+  background-color:#42B6E1;
+  color: white;
+}
+
+.bar-text {
+  color: white
+}
+
+.edit-btn {
+  color: blue
+}
+
+.delete-btn {
+  color: red
+}
+
+ .user-avatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+html {
+  position: relative;
+  min-height: 100% !important;
+}
+
+body {
+  height: 100% !important;
+}
+
+#wrap {
+  min-height: 100% !important;
+}
+
+.text-small{
+  font-size: 10px;
+}
+
+#main {
+  min-height: 100%;
+  overflow:auto;
+  padding-bottom:150px; 
+}
+
+footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.search-input:focus {
+  width: 95%;
+}
+
+a[rel=prev] {
+  margin-right: 20px;
+}
+
+.paginator > a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #F39C12;
+}
+
+.jumbotron {
+  padding: 80px 0; 
+  margin-bottom: -10px !important;
+}
+
+#notice-msg {
+  color: red;
+}
+
+.apple_pagination {
+ 
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #42B6E1;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }

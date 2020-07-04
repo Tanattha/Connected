@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <i class="fas fa-users"></i>
+      CONNECTED
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+      aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <form class="form-inline my-2 my-lg-0 w-100">
+        <input class="form-control-sm mr-sm-1 search-input" type="text" placeholder="Search">
+        <button class="btn btn-sm btn-secondary my-2 my-sm-0" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <ul class="navbar-nav">
+
+        <% if current_user %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-link">
+            <i class="fas fa-bell mr-2"></i>
+          </li>
+          <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-envelope fa-fw"></i>
+              <span class="badge badge-danger">7</span>
+            </a>
+          <li class="nav-link">
+            <a href="/board">
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              CHAT ROOMS
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" data-toggle="dropdown" href="#" role="button"
+              aria-haspopup="true" aria-expanded="false">
+              <%= image_tag current_user.avatar, class: 'avatar' %> <br>
+
+              <%= current_user.user_name%>
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-right " aria-labelledby="userDropdown">
+              <%= link_to "Create a new post", new_post_path, class: "dropdown-item" %>
+              <%= link_to "View Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+
+              <div class="dropdown-divider"></div>
+
+              <%= link_to('Logout', {:controller => "sessions", :action => 'destroy'}, :method => :delete , class: "dropdown-item") %>
+            </div>
+
+
+          </li>
+        </ul>
+    </div>
+    <% else %>
+    <li class="nav-item">
+      <%= link_to 'Login', login_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Register', new_user_path, class: 'nav-link' %>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+  </div>
+</nav>
+<br>
+<div>
+  <% if flash[:success] %>
+  <div class="alert alert-success text-center">
+    <%= flash[:success] %>
+  </div>
+  <% elsif flash[:info] %>
+  <div class="alert alert-info text-center">
+    <%= flash[:info] %>
+  </div>
+  <% elsif flash[:warning] %>
+  <div class="alert alert-warning text-center">
+    <%= flash[:warning] %>
+  </div>
+  <% elsif flash[:danger] %>
+  <div class="alert alert-danger text-center">
+    <%= flash[:danger] %>
+  </div>
+  <% end %>
+</div>

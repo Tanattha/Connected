@@ -1,0 +1,49 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <strong> <%= @user.errors.full_messages %></strong>
+  </div>
+<% end %>
+
+<% if logged_in? %>
+<% controller.redirect_to root_path %>
+<% end %>
+
+<%= form_for @user do |f| %>
+
+<div class="form-group">
+      <%= f.file_field :avatar %>  
+</div>
+
+
+<div class="form-group">
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, autofocus: true, autocomplete:
+    "first_name", class: 'form-control', required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",
+    class: 'form-control', required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.label :user_name %><br />
+  <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name",
+    class: 'form-control', required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:
+    'form-control', required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.label :password %> <%= f.password_field :password, class: 'form-control', required: true %>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Sign Up", class: 'btn btn-success' %>
+</div>
+<% end %>

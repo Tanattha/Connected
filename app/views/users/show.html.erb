@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <p class="head-bar">All POST BY : <%= @user.user_name %></p>
+ <hr>
+  <div class="row">
+    <!-- start sidebar -->
+    <div class="col-md-4">
+      <div class="card my-4">
+        <h5 class="card-header upper left-bar-color">
+          <i class="fas fa-user-circle"></i>&nbsp;PROFILE
+        </h5>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-10">
+              <%= image_tag @user.avatar, class: 'user-avatar' %>
+              <div class="card-body text-center">
+                <h4 class="card-title">
+                  <%= @user.user_name.capitalize %>
+                </h4>
+                
+                <a class="btn btn-success" rel="nofollow" data-method="post"
+                  href="/conversations?recipient_id=11&amp;sender_id=28">Send Message</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- end sidebar -->
+    <!-- Start Post -->
+
+    <div class="col-md-8 ">
+      <% if !@user.posts.empty? %>
+
+
+      <% @user.posts.each do |post| %>
+      <div class="card mt-4">
+
+        <div class="card-body">
+          <h5 class="card-title" style="text-transform:uppercase;">
+            <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> <%= link_to post.title, post %> 
+            <span class="float-right text-small badge badge-warning">
+              <%= post.category.name %>
+            </span>
+           
+            
+          </h5>
+          <p class="card-text">
+            <%= post.body %>
+          </p>
+        </div>
+        <div class="float-right card-footer bar-color">
+          Posted By : <%= link_to post.user.user_name, post.user, class: "bar-color" %> | <%= time_ago_in_words post.created_at %> ago 
+          
+          <span class="float-right text-small">  
+            <% if post.comments.size > 0  %><%= post.comments.size %> <i class="fa fa-comments" aria-hidden="true"></i>
+            <% else %>Be the first comment!<% end %>
+            </span>
+
+         </div>
+      </div>
+      <% end %>
+
+
+      <!--
+   Pagination 
+  <ul class="pagination justify-content-center mt-4">
+    <nav class="pagination" role="navigation" aria-label="pager">
+
+    <span class="page current">1&nbsp;&nbsp;  </span>
+    <span class="page"><a rel="next" href="/?page=2">2&nbsp;&nbsp;  </a></span>
+    <span class="page"><a href="/?page=3">3&nbsp;&nbsp;  </a></span>
+    <span class="page"><a href="/?page=4">4&nbsp;&nbsp;  </a></span>
+    <span class="page"><a href="/?page=5">5  </a></span>
+    <span class="page gap">&hellip;&nbsp;&nbsp;</span>
+    <span class="next"><a rel="next" href="/?page=2">Next &rsaquo;&nbsp; </a></span>
+    <span class="last"><a href="/?page=11">Last &raquo;</a></span>
+  </nav>
+</ul>
+-->
+    
+
+    <% else %>
+    <h4 class="text-center"><%= @user.user_name %> hasn't posted anything yet.</h4>
+    <% end %>
+    <!-- End Post -->
+
+
+
+
+  </div>
+  </div>
+</body>
+
+</html>
