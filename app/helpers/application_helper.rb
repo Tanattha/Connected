@@ -2,9 +2,16 @@ module ApplicationHelper
     def logged_in?
         !!session[:user_id]
     end
+
     
     def current_user
       @current_user ||= User.find_by_id(session[:user_id])  if  !!session[:user_id]
+    end
+
+    def is_admin?
+      if logged_in?
+        current_user.role == 1 
+      end
     end
 
     def pluralize (count, noun, text = nil)
@@ -21,5 +28,11 @@ module ApplicationHelper
       end
     end
   
-  
+    def flash_warning(text="Something went wrong.")
+      flash[:warning] = "#{text}"
+    end
+
+    def pav_nav
+      self.paginate(page: params[:page], per_page: 10).order('created_at DESC') 
+    end
 end

@@ -5,4 +5,5 @@
 //= require jquery-ui
 //= require_tree
 //= link application.js
-
+//= jquery_ujs
+//= require jquery_ujs

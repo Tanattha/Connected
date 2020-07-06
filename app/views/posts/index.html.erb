@@ -2,6 +2,14 @@
 <html>
 
 <body>
+    <%= form_tag posts_path, :method => 'get' do %>
+    <p>
+        <%= text_field_tag :search, params[:search], class: 'form-control-sm mr-sm-1 search-input', placeholder: "Search" %>
+        <%= button_tag(type: "submit", class: "btn btn-sm btn-secondary my-2 my-sm-0") do %> <i
+            class="fas fa-search "></i><% end %>
+    </p>
+    <% end %>
+
     <div class="row">
         <!-- start sidebar -->
         <div class="col-md-4">
@@ -19,13 +27,15 @@
                                     <%= link_to "All Posts", posts_path %>
 
                                 </li>
-                                <li class="mb-2">
-                                    <i class="fas fa-comment-slash mr-1"></i>
-                                    <a href="/?filter=nocomments">No Comments</a>
-                                </li>
+
                                 <li class="mb-2">
                                     <i class="fas fa-comment-dollar mr-1"></i>
-                                    <a href="/?filter=popular">Most Comments</a>
+                                    <%= link_to "Most Comments", posts_path(:filter => "most_comments") %>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-comment-slash mr-1"></i>
+
+                                    <%= link_to "No Comment", posts_path(:filter => "no_comment") %>
                                 </li>
                             </ul>
                         </div>
@@ -38,9 +48,14 @@
             <div class="card my-4">
                 <h5 class="card-header upper left-bar-color">
                     <i class="fas fa-list-ul"></i>&nbsp;CATEGORIES
+                    <% if is_admin? %>
+                    <%= link_to " | New Category", new_category_path, class: "txt-white" %>
+                <% end %>
                 </h5>
+               
 
                 <div class="card-body">
+                   
                     <div class="row">
                         <div class="col-lg-9">
                             <ul class="list-unstyled mb-0">
@@ -57,8 +72,9 @@
                 </div>
 
             </div>
-
+           
         </div>
+        
         <!-- end sidebar -->
         <!-- Start Post -->
 
@@ -75,7 +91,7 @@
                         <%= link_to post.title, post %>
                     </h5>
                     <p class="card-text">
-                        <%= post.body %>
+                        <%= post.body.capitalize %>
                     </p>
                 </div>
                 <div class="float-right card-footer bar-color">

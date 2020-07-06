@@ -4,7 +4,7 @@
 
 <div class="col-md-6 offset-md-3">
 
-  <h2>Log in</h2>
+  <h3  class="txt-blue">LOG IN</h3>
   <hr>
   <%= form_tag('/login', method: :post) do %>
     <div class="form-group">
@@ -29,3 +29,4 @@ Not a member yet?  <%= link_to "Sign Up", new_user_path %>
 <br>
 
 <%= link_to 'Log in with Google!', '/auth/google_oauth2' %>
+</div>

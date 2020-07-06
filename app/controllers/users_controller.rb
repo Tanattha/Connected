@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :logged_in?, only: [:new, :create, :edit, :update]
+    before_action :logged_in?
+    skip_before_action :logged_in?, only: [:new, :create]
   
     def new
         @user = User.new
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
        else
-         flash[:warning] = "Some thing went wrong."
+         flash_warning
          render 'new'
        end
     end
@@ -23,14 +24,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-      #  @user = current_user
-       @user = User.find(params[:id])
-     
+        find_user
     end
   
     def update
-        @user = User.find(params[:id])
-  
+        find_user
         if @user.update(user_params)
             redirect_to @user
         else
@@ -39,19 +37,15 @@ class UsersController < ApplicationController
     end
 
     def destroy 
-
     end
 
     private
-
     def find_user
-
+        @user = User.find(params[:id])
     end
 
     def user_params
         params.require(:user).permit(:user_name, :password, :first_name, :last_name, :email, :avatar)
     end
-
-  
 
 end

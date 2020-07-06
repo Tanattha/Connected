@@ -7,11 +7,22 @@ puts 'seeding users...'
     last_name: Faker::Name.unique.last_name,
     email: Faker::Internet.unique.email,
     user_name: Faker::Internet.unique.username,
-    password_digest: Faker::Internet.password(min_length: 8),
+    password: '1234',
   })
-  user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
+  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
 
 end
+
+puts 'seeding an admin'
+user = User.create({
+  first_name: 'admin',
+  last_name: 'admin',
+  email: 'tanattha.thuneim@gmail.com',
+  user_name: 'admin',
+  password: '11223344',
+  role: 1
+})
+  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
 
 puts 'seeding categories...'
   
@@ -19,13 +30,15 @@ categories = [
     {name: "General"},
     {name: "Entertainments"},
     {name: "Sports & Heath"},
-    {name: "Books & Arts"},
-    {name: "Bussinesses & Marketing"},
-    {name: "Kids"},
+    {name: "Arts and Crafts"},
+    {name: "Bussiness & Marketing"},
+    {name: "Kids & Babies"},
     {name: "Hobbies & Activities"},
     {name: "Education"},
     {name: "Computers & Gadgets"},
-    {name: "Travel"}
+    {name: "Travel"},
+    {name: "Home & Garden"},
+    {name: "Fictions & Comics"}
 ]
 
 categories.each do |category|
@@ -36,7 +49,7 @@ categories.each do |category|
 puts 'seeding posts...'
 50.times do
   Post.create({
-    category_id: Faker::Number.between(from: 1, to: 10),
+    category_id: Faker::Number.between(from: 1, to: 12),
     user_id: Faker::Number.between(from: 1, to: 20),
     title: Faker::Company.catch_phrase,
     body: Faker::Quote.matz,

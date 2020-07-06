@@ -13,10 +13,41 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
+.limit-txt{
+  -webkit-line-clamp: 2
+}
+.blue-bar {
+  background-color: #154D68 ;
+}
+
+.carousel .carousel-inner img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.getintouch img {
+  width: 50%;
+  height: 20%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.txt-green{
+  color: #0C6980;
+}
+.txt-white {
+  color: white;
+}
+.txt-blue {
+  color: #3498DB;
+}
+
 .head-bar {
   font-size: x-large;
   color: #3498DB;
-  
 }
 
 .left-bar-color {

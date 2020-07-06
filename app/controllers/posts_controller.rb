@@ -1,9 +1,16 @@
 class PostsController < ApplicationController
-  before_action :logged_in?, only: [:new, :create, :edit, :update, :destroy]
-
-    def index 
-      @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC') 
+  before_action :logged_in?
+  skip_before_action :logged_in?, only: [:index, :show]
+  
+  def index
+    if params[:filter].present? 
+      @posts = Post.filter(params[:filter]).paginate(page: params[:page], per_page: 10)
+    else 
+      @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 10)
     end
+   
+  end
+    
     def new
       @post = Post.new
     end
@@ -14,7 +21,7 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to @post
       else
-        flash[:warning] = "Some thing went wrong."
+        flash_warning
         render 'new'
       end
     end
@@ -22,6 +29,7 @@ class PostsController < ApplicationController
     def show 
       find_post
       @comment = @post.comments.new 
+     
     end
   
     def edit
@@ -33,7 +41,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
           redirect_to @post
       else
-          flash[:warning] = "Some thing went wrong."
+          flash_warning
           render 'edit'
       end
     end
@@ -54,6 +62,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :category_id, :user_id)
+      params.require(:post).permit(:title, :body, :category_id, :user_id, :search)
     end
 end

@@ -2,6 +2,7 @@
 <html>
 
 <body>
+  <%= link_to "Back to All Posts", posts_path %>
   <div class="row">
     <!-- start sidebar -->
 
@@ -26,24 +27,23 @@
     <!-- Start Post -->
 
     <div class="col-md-8 ">
-
-    
-
-      <h3 class="mt-4 upper"><%= @post.title%>  <span class="float-right text-small badge badge-warning">
+     
+      <h3 class="mt-4 upper txt-blue"><%= @post.title.capitalize %>  
+        <span class="float-right text-small badge badge-warning">
         <%= @post.category.name %>
       </span></h3>
 
       <p>
         Posted By: <%= link_to @post.user.user_name, @post.user %> | <%= time_ago_in_words @post.created_at %> ago
-        <% if @post.user == current_user %>
+        <% if @post.user == current_user ||  is_admin? %>
         <span class="float-right ">
           <%= link_to '<i class="fas fa-pencil-alt edit-btn"></i> '.html_safe, edit_post_path(@post) %>&nbsp;
-          <%= link_to '<i class="fas fa-trash delete-btn"></i> '.html_safe, post_path(@post), :method => :delete , :confirm => "Are you sure ?"%>
+          <%= link_to '<i class="fas fa-trash delete-btn"></i> '.html_safe, post_path(@post), :method => :delete , confirm: "Are you sure?" %>
           <% end %>
         </span>
       </p>
       <hr>
-      <p class="lead"><%= @post.body %></p>
+      <p ><%= @post.body %></p>
 
       <hr>
 
@@ -64,16 +64,14 @@
 
      
       <div class="col-md-12 ">
-          <% Comment.all.where(post_id: @post.id).order(created_at: :desc).each do |comment| %>
+          <% @post.comments.order(created_at: :desc).each do |comment| %>
           <div>
-            
-
             <p>
               <%= link_to (image_tag comment.user.avatar, class: 'avatar'), comment.user %> &nbsp;&nbsp;
               <%= link_to comment.user.user_name, comment.user %>
 
 
-              <% if comment.user == current_user %>
+              <% if comment.user == current_user || is_admin? %>
 
               <span class="float-right">
                 <%= link_to '<i class="fas fa-pencil-alt edit-btn"></i> '.html_safe, edit_comment_path(comment, @comment) %>&nbsp;&nbsp;

@@ -18,7 +18,7 @@
               <%= image_tag @user.avatar, class: 'user-avatar' %>
               <div class="card-body text-center">
                 <h4 class="card-title">
-                  <%= @user.user_name.capitalize %>
+                  <%= @user.user_name %>
                 </h4>
                 
                 <a class="btn btn-success" rel="nofollow" data-method="post"
@@ -52,7 +52,7 @@
             
           </h5>
           <p class="card-text">
-            <%= post.body %>
+            <%= post.body.capitalize %>
           </p>
         </div>
         <div class="float-right card-footer bar-color">
