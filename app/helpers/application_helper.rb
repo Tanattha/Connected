@@ -22,17 +22,14 @@ module ApplicationHelper
 
     def display_avatar(user_id)
       user = User.find_by_id(user_id)
-      
       if !user.avatar.attached?
-         user.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
+        random = rand(1..9)
+        user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.jpg')), filename: "#{random}"'.jpg', content_type: 'image/jpg')
       end
     end
   
     def flash_warning(text="Something went wrong.")
       flash[:warning] = "#{text}"
     end
-
-    def pav_nav
-      self.paginate(page: params[:page], per_page: 10).order('created_at DESC') 
-    end
+ 
 end

@@ -4,7 +4,7 @@
 <body>
     <%= form_tag posts_path, :method => 'get' do %>
     <p>
-        <%= text_field_tag :search, params[:search], class: 'form-control-sm mr-sm-1 search-input', placeholder: "Search" %>
+        <%= text_field_tag :search, params[:search], class: 'form-control-sm mr-sm-1 search-input', placeholder: "Search by title" %>
         <%= button_tag(type: "submit", class: "btn btn-sm btn-secondary my-2 my-sm-0") do %> <i
             class="fas fa-search "></i><% end %>
     </p>

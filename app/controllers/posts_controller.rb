@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   
   def index
     if params[:filter].present? 
-      @posts = Post.filter(params[:filter]).paginate(page: params[:page], per_page: 10)
+      @posts = Post.filter(params[:filter]).paginate(page: params[:page])
     else 
-      @posts = Post.search(params[:search]).paginate(page: params[:page], per_page: 10)
+      @posts = Post.search(params[:search]).paginate(page: params[:page])
     end
    
   end

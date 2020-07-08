@@ -9,7 +9,8 @@ puts 'seeding users...'
     user_name: Faker::Internet.unique.username,
     password: '1234',
   })
-  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
+  random = rand(1..9)
+  user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.jpg')), filename: "#{random}"'.jpg', content_type: 'image/jpg')
 
 end
 
@@ -22,7 +23,7 @@ user = User.create({
   password: '11223344',
   role: 1
 })
-  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','default.jpg')), filename: 'default.jpg', content_type: 'image/jpg')
+  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
 
 puts 'seeding categories...'
   

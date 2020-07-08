@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root 'sessions#home'
   
-  resources :users
+  resources :users 
+  resources :conversations do
+    resources :messages
+   end
   resources :posts 
   resources :comments
   resources :categories 
+ 
   
   get 'auth/google_oauth2/callback', to: 'omniauth#create'
   get '/login' => 'sessions#new'
@@ -12,4 +16,5 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
 
+  
 end

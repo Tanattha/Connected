@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+ 
+  <div class="row">
+    <!-- start sidebar -->
+
+    <div class="col-md-6">
+      <div class="card my-6 ">
+        <h5 class="card-header upper left-bar-color">
+          <i class="fas fa-user-friends"></i></i>&nbsp; Friends
+        </h5>
+
+        <br>
+        <p class="text-center txt-blue ">Want to make a new friend? The More the Merrier!!</p>
+         <div class="card-body ui list">
+          
+          <% @conversations.each do |conversation| %>
+
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+
+          <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <% if recipient.present? && conversation.sender_id != current_user.id %>
+          <% if conversation.messages.where(read: false).size > 0 %>
+          <span class="badge badge-pill badge-danger ml-2 float"> 
+            <%= conversation.messages.where(read: false).size %>
+            <i class="fas fa-comment-dots"></i>
+          </span>
+          <% end %>
+            <% end %>
+          <div class="text-center">
+          <%= link_to (image_tag recipient.avatar, class: 'avatar'), recipient %> &nbsp;&nbsp;
+          <%= link_to recipient.user_name, conversation_messages_path(conversation)%> <br>
+          </div>
+          <% end %>
+          <% end %>
+           
+           
+          
+         
+         </div>
+      </div>
+    </div>
+    <!-- end sidebar -->
+    <!-- Start chat -->
+    <div class="col-md-6">
+      <div class="card my-6 ">
+        <h5 class="card-header upper left-bar-color">
+          <i class="fas fa-user-plus"></i></i>&nbsp; Send a new message
+        </h5>
+
+       
+         
+         <div class="card-body">
+          <div class="ui list">
+
+           
+
+            <% @users.order('user_name asc').each do |user| %>
+            <% if user.id != current_user.id && user.user_name != 'admin' %>
+            <%= link_to (image_tag user.avatar, class: 'avatar'), user %> &nbsp;&nbsp; <%= user.user_name %>
+            &nbsp;&nbsp;
+            <%= link_to '<i class="fas fa-paper-plane"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+            <br>
+            <% end %>
+            <% end %>
+           
+          </div>
+         </div>
+       
+         <%= will_paginate @users, class: "apple_pagination" %>
+      </div>
+
+    </div>
+   
+    
+    <!-- End chat -->
+  </div>
+</body>
+</html>
+
+
+
+

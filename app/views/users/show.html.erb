@@ -2,8 +2,7 @@
 <html>
 
 <body>
-  <p class="head-bar">All POST BY : <%= @user.user_name %></p>
- <hr>
+
   <div class="row">
     <!-- start sidebar -->
     <div class="col-md-4">
@@ -17,21 +16,65 @@
             <div class="col-lg-10">
               <%= image_tag @user.avatar, class: 'user-avatar' %>
               <div class="card-body text-center">
-                <h4 class="card-title">
+                <h4 class="card-title txt-blue">
                   <%= @user.user_name %>
                 </h4>
+
+                <% if current_user != @user %>
+
                 
-                <a class="btn btn-success" rel="nofollow" data-method="post"
-                  href="/conversations?recipient_id=11&amp;sender_id=28">Send Message</a>
+                <%= link_to 'Send a message &nbsp;<i class="fas fa-paper-plane"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
+                <% end %>
               </div>
             </div>
 
           </div>
         </div>
-
       </div>
 
+      <!-- friends zone start-->
+      <% if @user == current_user %>
+
+      <div class="card my-6">
+        <h5 class="card-header upper left-bar-color">
+          <i class="fas fa-user-friends"></i>&nbsp;FRIENDS
+        </h5>
+
+        <div class="card-body ui list">
+
+          <p class="text-center "> <%= link_to "Want to make a new friends?", conversations_path, class: "txt-blue" %>
+          </p>
+
+          <% @conversations.each do |conversation| %>
+
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+
+          <% if conversation.sender_id == current_user.id %>
+          <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+          <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <% if recipient.present? && conversation.sender_id != current_user.id %>
+          <% if conversation.messages.where(read: false).size > 0 %>
+          <span class="badge badge-pill badge-danger ml-2 float"> 
+            <%= conversation.messages.where(read: false).size %>
+            <i class="fas fa-comment-dots"></i>
+          </span>
+          <% end %>
+            <% end %>
+          <div>
+          <%= link_to (image_tag recipient.avatar, class: 'avatar'), recipient %> &nbsp;&nbsp;
+          <%= link_to recipient.user_name, conversation_messages_path(conversation)%> <br>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+      <!-- friends zone end-->
+
     </div>
+
     <!-- end sidebar -->
     <!-- Start Post -->
 
@@ -44,57 +87,46 @@
 
         <div class="card-body">
           <h5 class="card-title" style="text-transform:uppercase;">
-            <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> <%= link_to post.title, post %> 
+            <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> <%= link_to post.title, post %>
             <span class="float-right text-small badge badge-warning">
               <%= post.category.name %>
             </span>
-           
-            
+
+
           </h5>
           <p class="card-text">
             <%= post.body.capitalize %>
           </p>
         </div>
         <div class="float-right card-footer bar-color">
-          Posted By : <%= link_to post.user.user_name, post.user, class: "bar-color" %> | <%= time_ago_in_words post.created_at %> ago 
-          
-          <span class="float-right text-small">  
+          Posted By : <%= link_to post.user.user_name, post.user, class: "bar-color" %> |
+          <%= time_ago_in_words post.created_at %> ago
+
+          <span class="float-right text-small">
             <% if post.comments.size > 0  %><%= post.comments.size %> <i class="fa fa-comments" aria-hidden="true"></i>
             <% else %>Be the first comment!<% end %>
-            </span>
+          </span>
 
-         </div>
+        </div>
       </div>
       <% end %>
 
 
-      <!--
-   Pagination 
-  <ul class="pagination justify-content-center mt-4">
-    <nav class="pagination" role="navigation" aria-label="pager">
-
-    <span class="page current">1&nbsp;&nbsp;  </span>
-    <span class="page"><a rel="next" href="/?page=2">2&nbsp;&nbsp;  </a></span>
-    <span class="page"><a href="/?page=3">3&nbsp;&nbsp;  </a></span>
-    <span class="page"><a href="/?page=4">4&nbsp;&nbsp;  </a></span>
-    <span class="page"><a href="/?page=5">5  </a></span>
-    <span class="page gap">&hellip;&nbsp;&nbsp;</span>
-    <span class="next"><a rel="next" href="/?page=2">Next &rsaquo;&nbsp; </a></span>
-    <span class="last"><a href="/?page=11">Last &raquo;</a></span>
-  </nav>
-</ul>
--->
-    
-
-    <% else %>
-    <h4 class="text-center"><%= @user.user_name %> hasn't posted anything yet.</h4>
-    <% end %>
-    <!-- End Post -->
 
 
 
+      <% else %>
+      
+      <h4 class="text-center" style="color: red;"><%= @user.user_name %> hasn't posted anything yet.</h4>
+      <% end %>
+      <!-- End Post -->
 
-  </div>
+
+      <%= will_paginate @user_post, class: "apple_pagination" %>
+
+    </div>
+
+
   </div>
 </body>
 

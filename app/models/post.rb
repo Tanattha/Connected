@@ -3,7 +3,8 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :comments
     validates_presence_of :title
-    scope :filter_most_comments, -> (title) { where title: title }
+   
+    self.per_page = 10;
 
     def self.search(search)
         if search

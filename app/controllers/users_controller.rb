@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
     before_action :logged_in?
     skip_before_action :logged_in?, only: [:new, :create]
+
+  
   
     def new
         @user = User.new
@@ -9,7 +11,6 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         display_avatar(@user.id)
-       
        if @user.save
         session[:user_id] = @user.id
         redirect_to root_path
@@ -21,6 +22,8 @@ class UsersController < ApplicationController
     
     def show 
         @user = User.find_by(id: params[:id])
+        @user_post = @user.posts.paginate(page: params[:page])
+        @conversations = Conversation.all
     end
 
     def edit

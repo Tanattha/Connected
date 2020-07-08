@@ -14,6 +14,9 @@
 @import "font-awesome";
 
 
+.txt-center{
+  text-align:center
+}
 .limit-txt{
   -webkit-line-clamp: 2
 }
@@ -81,8 +84,8 @@
   border-radius: 50%;
 }
 .avatar {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 

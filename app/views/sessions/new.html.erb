@@ -7,6 +7,7 @@
   <h3  class="txt-blue">LOG IN</h3>
   <hr>
   <%= form_tag('/login', method: :post) do %>
+  
     <div class="form-group">
       <%= label_tag(:user_name, "Username:") %>
       <%= text_field_tag :user_name %>
@@ -21,6 +22,7 @@
       <%= submit_tag "Log in", class: 'btn btn-success' %>
     </div>
   <% end %> 
+  
   <br>
 
 Not a member yet?  <%= link_to "Sign Up", new_user_path %> 

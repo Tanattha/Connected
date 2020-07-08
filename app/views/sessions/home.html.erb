@@ -60,7 +60,7 @@
 
     <div class="card-body row text-center ">
       <div class="col-2 ">
-        <i class="fas fa-music"></i>
+        <i class="fas fa-thumbtack"></i></i>
         <br><%= link_to "GENERAL", category_path(id: 1)  %>
       </div>
       <div class="col-2">
@@ -158,7 +158,7 @@
     </h5>
     <div class="card-body row ">
       <div class="col-6">
-        <p class="txt-blue"> <i class="fas fa-comment-dollar mr-1 "> </i> LATEST DISCUSSIONS </p>
+        <p class="txt-blue"> <i class="fas fa-backward"></i> </i> LASTEST ACTIONS </p>
         <ul>
           <li class="media">
             <% Post.all.order('updated_at desc').limit(5).each do |post| %>
@@ -174,8 +174,14 @@
           <li class="media text-small">
 
             Posted By : <%= link_to post.user.user_name, post.user %> |
-            <%= time_ago_in_words post.created_at %> ago
-            | <%= post.comments.size %> <i class="fa fa-comments" aria-hidden="true"></i>
+            <%= time_ago_in_words post.created_at %> ago |
+           <% if post.comments.size > 0 %>
+           <%= post.comments.size %>&nbsp; <i class="fas fa-comment-dots"></i>
+           <% else %>
+           <p style="color:red"> Be the first comment!</p> 
+           <% end %>
+
+           
           </li>
           <br>
           <% end %>
@@ -223,7 +229,7 @@
 
       <div>
         <div class="card-body ">
-          <h3 class="txt-white">GET IN TOUCH</h3>
+          <h3 class="txt-white">GET IN TOUCH</h3><br>
           <p>Questions, comments or requests? Feel free to reach out, we’d love to hear from you.</p>
           <a href="mailto:tanattha.thuenim@gmail.com"></span> SEND US AN EMAIL HERE! <i
               class="far fa-paper-plane"></i> </a>
