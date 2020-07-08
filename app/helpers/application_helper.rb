@@ -24,7 +24,7 @@ module ApplicationHelper
       user = User.find_by_id(user_id)
       if !user.avatar.attached?
         random = rand(1..9)
-        user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.jpg')), filename: "#{random}"'.jpg', content_type: 'image/jpg')
+        user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
       end
     end
   

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :comments
   resources :categories 
  
+  resources :rooms
+  resources :room_messages
   
   get 'auth/google_oauth2/callback', to: 'omniauth#create'
   get '/login' => 'sessions#new'

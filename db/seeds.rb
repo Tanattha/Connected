@@ -10,7 +10,7 @@ puts 'seeding users...'
     password: '1234',
   })
   random = rand(1..9)
-  user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.jpg')), filename: "#{random}"'.jpg', content_type: 'image/jpg')
+  user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
 
 end
 
@@ -25,7 +25,7 @@ user = User.create({
 })
   user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
 
-puts 'seeding categories...'
+puts 'seeding categories & rooms...'
   
 categories = [
     {name: "General"},
@@ -44,9 +44,10 @@ categories = [
 
 categories.each do |category|
   Category.create(category)
+  Room.create(category)
   end
 
-
+  
 puts 'seeding posts...'
 50.times do
   Post.create({

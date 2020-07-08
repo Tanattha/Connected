@@ -8,3 +8,8 @@ require('popper.js');
 require('bootstrap');
 require("trix");
 require("@rails/actiontext");
+
+
+require("stylesheets/application");
+import "controllers";
+

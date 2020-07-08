@@ -1,0 +1,17 @@
+
+<% if current_user.role == 1 %>
+<%= link_to 'Create a Room', new_room_path, class: 'text-white' %>
+<br><br>
+
+<% end %>
+<% if @rooms.present? %>
+
+  <% @rooms.each do |room| %>
+  
+  <i class="fas fa-door-open"></i>  <%= link_to room.name, room_path(room), class: 'text-white', id: 'reload', type: 'load' %>
+  <br><br>
+  <% end %>
+
+<% else %>
+  <p style="color: red;">There are no rooms available.</p>
+<% end%>

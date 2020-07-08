@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+  <div class="row">
+    <!-- start sidebar -->
+
+    <div class="col-md-4">
+
+
+      <h5 class="card-header upper left-bar-color ">
+        <i class="fas fa-user-friends"></i>&nbsp; ROOMS
+      </h5>
+
+
+      <p class="card-title ">
+
+        <div class="card-body blue-bar">
+          <div class="ui list">
+            <div class="item text-center text-white">
+              <%= render 'rooms' %>
+            </div>
+          </div>
+
+      </p>
+
+    </div>
+
+  </div>
+  <!-- end sidebar -->
+
+  <!-- Start msg -->
+
+  <div class="col-md-8">
+
+    <h5 class="card-header upper left-bar-color ">
+      <i class="fas fa-comment-dots"></i>&nbsp; <%= @room.name.upcase %>
+    </h5>
+
+
+    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
+      <% @room_messages.each do |room_message| %>
+
+      <div data-role="message-template" class="flex items-center m-2">
+        <br>
+        <%= link_to (image_tag room_message.user.avatar, class: 'avatar'), room_message.user %>
+
+
+        <%= link_to room_message.user.user_name, room_message.user, class: "txt-blue" %>
+        <span class="float-right text-small">
+          <%= time_ago_in_words(room_message.created_at) %>
+        </span>
+        : <%= room_message.message %>
+
+      </div>
+      <% end %>
+
+
+
+
+      <br>
+      <%= form_for @room_message, remote: true, data: { controller: 'room-message', action: 'ajax:success->room-message#onPostSuccess' }, html: {class: 'w-full'} do |f| %>
+      <div class="flex mb-1 w-full">
+        <%= f.text_field :message, autofocus: true, data: { target: 'room-message.message' }, class: 'form-control w-90% appearance-none rounded border px-3 py-4 font-bold', placeholder: 'type your message....' %>
+        <br>
+        <%= f.submit 'Send', class: 'actions btn btn-success float-right'%>
+        <%= f.hidden_field :room_id, as: :hidden %>
+      </div>
+      <% end %>
+
+    </div>
+    <!-- End msg -->
+  </div>
+  </div>
+  </body>
+  </html>
+  
