@@ -2,8 +2,10 @@ class SessionsController < ApplicationController
 
  
      def home 
-            msgs = Conversation.find_by(recipient_id: current_user.id) if logged_in?
+        if logged_in?    
+            msgs = Conversation.find_by(recipient_id: current_user.id) 
             @num_new_msg = msgs.messages.where(read: false).size if msgs
+        end
     end
 
     def create

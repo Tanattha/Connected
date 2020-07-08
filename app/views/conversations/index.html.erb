@@ -25,7 +25,9 @@
           <% else %>
           <% recipient = User.find(conversation.sender_id) %>
           <% end %>
-          <% if recipient.present? && conversation.sender_id != current_user.id %>
+         
+          <div class="text-center">
+            <% if conversation.messages.where(read: false) %>
           <% if conversation.messages.where(read: false).size > 0 %>
           <span class="badge badge-pill badge-danger ml-2 float"> 
             <%= conversation.messages.where(read: false).size %>
@@ -33,7 +35,6 @@
           </span>
           <% end %>
             <% end %>
-          <div class="text-center">
           <%= link_to (image_tag recipient.avatar, class: 'avatar'), recipient %> &nbsp;&nbsp;
           <%= link_to recipient.user_name, conversation_messages_path(conversation)%> <br>
           </div>

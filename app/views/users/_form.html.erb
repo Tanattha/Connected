@@ -42,11 +42,10 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :password %> <%= f.password_field :password, class: 'form-control', required: true %>
+  <%= f.label :password %> 
+  <%= f.password_field :password, class: 'form-control', required: true %>
 </div>
 
-<%=f.label :password_confirmation %>
-    <%=f.password_field :password_confirmation%>
 
 <div class="form-group">
   <%= f.submit "Sign Up", class: 'btn btn-success' %>
