@@ -47,15 +47,17 @@
 
       <hr>
 
-
+      <% if logged_in? %>
       <div class="card mt-4 mb-5">
         <h5 class="card-header bar-color">Leave a Comment:</h5>
         <div class="card-body">
+          
           <%= render 'comments/comment_form', comment: @comment %>
-
+         
         </div>
         </form>
       </div>
+      <% end %>
 
      
       <div class="col-md-12 ">

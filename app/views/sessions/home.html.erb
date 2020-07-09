@@ -43,7 +43,11 @@
         <div class="card-body" style="background-color: #0C6980;">
           <h5 class="card-title"><i class="fas fa-star"></i> CHAT ROOMS <i class="fas fa-star"></i> </h5>
           <p class="card-text">Make a good connection here!</p>
+          <%if logged_in? %>
           <%= link_to "GO", rooms_path, class: 'btn btn-primary' %>
+          <% else %>
+          <%= link_to "LOG IN FIRST!", login_path, class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
     </div>

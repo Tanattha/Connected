@@ -1,5 +1,6 @@
 class RoomMessagesController < ApplicationController
     before_action :load_entities
+    before_action :logged_in?
   
     def create
       @room_message =

@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
-    before_action :load_room, only: %i[show edit update]
-    before_action :load_rooms, only: %i[show]
-  
+    
+    before_action :load_room, only: [:show , :edit, :update]
+    before_action :load_rooms, only: [:show]
+    before_action :logged_in?
+    
     def index
       @rooms = Room.all
     end

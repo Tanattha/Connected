@@ -1,9 +1,4 @@
 
-<% if current_user.role == 1 %>
-<%= link_to 'Create a Room', new_room_path, class: 'text-white' %>
-<br><br>
-
-<% end %>
 <% if @rooms.present? %>
 
   <% @rooms.each do |room| %>
