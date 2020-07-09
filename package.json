@@ -16,6 +16,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
+    "@ionic/app-scripts": "^3.2.4",
     "prettier": "2.0.5",
     "webpack-dev-server": "^3.11.0"
   }
