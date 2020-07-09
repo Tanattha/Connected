@@ -19,5 +19,9 @@
     "@ionic/app-scripts": "^3.2.4",
     "prettier": "2.0.5",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "start": "node postcss.config.js",
+    "test": "echo \"Error: no test specified                   \" && exit 1"
   }
 }
