@@ -30,9 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 
 gem 'kaminari'
-gem 'font-awesome-sass'
 gem 'bootswatch'
-gem 'bootstrap'
 gem 'actiontext'
 gem 'xmlrpc'
 gem 'jquery-rails'
@@ -42,6 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'thin'
 gem 'will_paginate', '~> 3.3.0'
+gem 'bootstrap', '~> 4.5.0'
 gem 'sprockets', '3.7.2'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 
