@@ -164,17 +164,22 @@
       <div class="col-6">
         <p class="txt-blue"> <i class="fas fa-backward"></i> </i> LASTEST ACTIONS </p>
         <ul>
-          <li class="media">
-            <% Post.all.order('updated_at desc').limit(5).each do |post| %>
-
-            <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> &nbsp;
-
-            <%= link_to post.title, post %>
-
-          </li>
-          <span class="float-right text-small txt-white  badge badge-warning">
+           <% Post.all.order('updated_at desc').limit(5).each do |post| %>
+           <span class="float-right text-small txt-white  badge badge-warning">
             <%= link_to post.category.name, post.category, class: 'txt-white ' %>
           </span>
+          <li class="media">
+           
+
+            <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> &nbsp;
+            
+            <%= link_to post.title, post %>
+            
+          </li>
+          
+
+          
+          
           <li class="media text-small">
 
             Posted By : <%= link_to post.user.user_name, post.user %> |
@@ -195,8 +200,12 @@
       <div class="col-6 ">
         <p class="txt-blue"> <i class="fas fa-comment-slash mr-1 "> </i> NO COMMENT, BE THE FIRST ONE! </p>
         <ul>
+          <% Post.left_outer_joins(:comments).where(comments: {post_id: nil}).order('created_at desc').limit(5).each do |post| %>
+
+          <span class="float-right text-small badge badge-warning">
+            <%= link_to post.category.name, post.category, class: 'txt-white ' %>
+          </span>
           <li class="media">
-            <% Post.left_outer_joins(:comments).where(comments: {post_id: nil}).order('created_at desc').limit(5).each do |post| %>
 
             <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %> &nbsp;
 
@@ -205,9 +214,7 @@
 
 
           </li>
-          <span class="float-right text-small badge badge-warning">
-            <%= link_to post.category.name, post.category, class: 'txt-white ' %>
-          </span>
+
 
           <li class="media text-small">
 
