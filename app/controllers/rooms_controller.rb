@@ -11,6 +11,15 @@ class RoomsController < ApplicationController
     def show
       @room_message = RoomMessage.new room: @room
       @room_messages = @room.room_messages.includes(:user)
+        
+    if @room_messages.length > 10
+      @over_ten = true
+      @room_messages = @room.room_messages.includes(:user)[-10..-1]
+     end
+     if params[:m]
+      @room_messages = false
+      @room_messages = @room.room_messages.includes(:user)
+     end
       
     end
   
