@@ -44,7 +44,6 @@ gem 'thin'
 gem 'will_paginate', '~> 3.3.0'
 gem 'sprockets', '3.7.2'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
-gem 'letter_avatar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
