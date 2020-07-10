@@ -110,22 +110,12 @@
         </div>
       </div>
       <% end %>
-
-
-
-
-
       <% else %>
-      
       <h4 class="text-center" style="color: red;"><%= @user.user_name %> hasn't posted anything yet.</h4>
       <% end %>
       <!-- End Post -->
-
-
       <%= will_paginate @user_post, class: "apple_pagination" %>
-
     </div>
-
 
   </div>
 </body>
