@@ -11,6 +11,7 @@
     "bootswatch": "^4.5.0",
     "grunt": "^1.2.1",
     "jquery-ujs": "^1.2.2",
+    "mem": "^4.0.0",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0"
   },
