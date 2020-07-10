@@ -40,7 +40,6 @@ categories.each do |category|
 
 
 
-=begin
 puts 'seeding users...'
 
 10.times do
@@ -58,9 +57,8 @@ end
   #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
   #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
 
-=begin
-puts 'seeding an admin'
 
+puts 'seeding an admin'
   user = User.create({
   first_name: 'admin',
   last_name: 'admin',
@@ -69,7 +67,7 @@ puts 'seeding an admin'
   password: '11223344',
   role: 1
 })
-=end
+
 #obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
   #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
   #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
@@ -78,8 +76,6 @@ puts 'seeding an admin'
 
 
 
-
-=begin
 puts 'seeding posts...'
 20.times do
   Post.create({
@@ -98,6 +94,6 @@ puts 'seeding comments...'
     body: Faker::Hipster.sentences.sample
   })
 end
-=end
+
 
 puts 'All Done!'
