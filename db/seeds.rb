@@ -2,6 +2,7 @@ require 'faker'
 #require 'aws-sdk-s3' 
 
 #s3 = Aws::S3::Resource.new(region: 'us-east-1')
+
 User.destroy_all
 puts 'deleteing users...'
 Post.destroy_all
@@ -50,16 +51,16 @@ puts 'seeding users...'
     user_name: Faker::Internet.unique.username,
     password: '1234',
   })
-end
-  
-  #user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
-  #obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
+
+  random = rand(1..9)
+  user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
+ # obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
   #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
   #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
 
-
+end
 puts 'seeding an admin'
-  user = User.create({
+  admin = User.create({
   first_name: 'admin',
   last_name: 'admin',
   email: 'tanattha.thuneim@gmail.com',
@@ -69,12 +70,10 @@ puts 'seeding an admin'
 })
 
 #obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
-  #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
-  #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
+#obj.get(response_target: 'public/images/avatars/#{i}.jpg')
+#user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
 
-
-
-
+admin.avatar.attach(io: File.open(Rails.root.join('public','images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
 
 puts 'seeding posts...'
 20.times do
