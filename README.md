@@ -1,6 +1,6 @@
 # Connected
 
-Welcome to Connected! All-in-one community web application! This app is fully functional MVC and CRUD application, using Ruby and Rails and display by HTML, CSS, JS and bootstraped. 
+Welcome to Connected! All-in-one community web application! This app is fully functional MVC and CRUD operations, using Ruby on Rails and display by HTML, CSS, JS and bootstraped. 
 
 
 ## Overview

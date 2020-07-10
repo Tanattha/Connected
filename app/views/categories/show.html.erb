@@ -9,31 +9,26 @@
     <div class="col-md-4">
       <div class="card my-4">
         <h5 class="card-header upper left-bar-color">
-          <i class="fas fa-filter"></i>&nbsp;CATEGORY FILTERS
+          <i class="fas fa-filter"></i>&nbsp;FILTERS
         </h5>
 
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-6">
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2">
-                  <i class="fas fa-globe mr-1"></i>
-                  <a href="/">All Posts</a>
-                </li>
-                <li class="mb-2">
-                  <i class="fas fa-comment-slash mr-1"></i>
-                  <a href="/?filter=nocomments">No Comments</a>
-                </li>
-                <li class="mb-2">
-                  <i class="fas fa-comment-dollar mr-1"></i>
-                  <a href="/?filter=popular">Most Comments</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+              <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                      <li class="mb-2">
+                          <i class="fas fa-globe mr-1"></i>
+                          <%= link_to "Back to All Posts", posts_path %>
 
+                      </li>
+
+                     
+                  </ul>
+              </div>
+          </div>
       </div>
+
+  </div>
 
 <!-- Categories -->
 <div class="card my-4">
@@ -69,7 +64,9 @@
         <div class="card-body">
           <h5 class="card-title" style="text-transform:uppercase;">
             <%= link_to (image_tag post.user.avatar, class: 'avatar'), post.user %>
-
+            <span class="float-right text-small badge badge-warning">
+              <%= post.category.name %>
+          </span>
             <%= link_to post.title, post %>
           </h5>
           <p class="card-text">
