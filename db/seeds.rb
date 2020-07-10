@@ -1,11 +1,11 @@
 require 'faker'
-require 'aws-sdk-s3' 
+#require 'aws-sdk-s3' 
 
-s3 = Aws::S3::Resource.new(region: 'us-east-1')
+#s3 = Aws::S3::Resource.new(region: 'us-east-1')
 User.destroy_all
 
 puts 'seeding users...'
-9.times do |i|
+20.times do
   user = User.create({
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
@@ -13,17 +13,16 @@ puts 'seeding users...'
     user_name: Faker::Internet.unique.username,
     password: '1234',
   })
-
+end
   
   #user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
-  obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
-  obj.get(response_target: 'public/images/avatars/#{i}.jpg')
-  user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
+  #obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
+  #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
+  #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
 
-end
 
 puts 'seeding an admin'
-1.time do |i|
+
   user = User.create({
   first_name: 'admin',
   last_name: 'admin',
@@ -32,10 +31,10 @@ puts 'seeding an admin'
   password: '11223344',
   role: 1
 })
-obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
-  obj.get(response_target: 'public/images/avatars/#{i}.jpg')
-  user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
-end
+#obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
+  #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
+  #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
+
 
 
 
