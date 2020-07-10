@@ -3,7 +3,18 @@ require 'faker'
 
 #s3 = Aws::S3::Resource.new(region: 'us-east-1')
 User.destroy_all
-
+puts 'deleteing users...'
+Post.destroy_all
+puts 'deleteing posts...'
+Comment.destroy_all
+puts 'deleteing comments...'
+Category.destroy_all
+puts 'deleteing categories...'
+Room.destroy_all
+puts 'deleteing rooms...'
+RoomMessage.destroy_all
+puts 'deleteing rooms messages...'
+puts '.........'
 puts 'seeding users...'
 20.times do
   user = User.create({
