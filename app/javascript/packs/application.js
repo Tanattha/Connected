@@ -11,3 +11,5 @@ require(bootstrap)
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require jquery.ui.widget
+//= require z.jquery.fileupload
