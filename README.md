@@ -9,7 +9,7 @@ Connected is a place to let everyone connect to each other. Either through posts
 
 ## Video Walkthrough
 
-Click here a video walkthrough: 
+Click here a video walkthrough: https://youtu.be/lFZFHlJxxW8
 
 ## Installation
 
