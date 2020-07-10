@@ -1,7 +1,11 @@
 require 'faker'
+require 'aws-sdk-s3' 
+
+s3 = Aws::S3::Resource.new(region: 'us-east-1')
+User.destroy_all
 
 puts 'seeding users...'
-20.times do
+20.times 
   user = User.create({
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
@@ -9,13 +13,17 @@ puts 'seeding users...'
     user_name: Faker::Internet.unique.username,
     password: '1234',
   })
-  random = rand(1..9)
-  user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
 
-end
+  i = rand(1..9)
+  #user.avatar.attach(io: File.open(Rails.root.join('public','images','avatars',"#{random}"'.png')), filename: "#{random}"'.png', content_type: 'image/png')
+  obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
+  obj.get(response_target: 'public/images/avatars/#{i}.jpg')
+  user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
+
+
 
 puts 'seeding an admin'
-user = User.create({
+  user = User.create({
   first_name: 'admin',
   last_name: 'admin',
   email: 'tanattha.thuneim@gmail.com',
@@ -23,8 +31,12 @@ user = User.create({
   password: '11223344',
   role: 1
 })
-  #user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
-  user.avatar.attach(params[:avatar])
+obj = s3.bucket('rails-connected-webapp').object('admin.jpg')    
+obj.get(response_target: 'public/images/avatars/admin.jpg')
+user.avatar.attach(io: File.open("public/images/avatars/admin.jpg"), filename: "admin.jpg")
+end
+
+
 puts 'seeding categories & rooms...'
   
 categories = [
