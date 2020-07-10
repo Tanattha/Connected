@@ -34,7 +34,7 @@ puts 'seeding an admin'
 obj = s3.bucket('rails-connected-webapp').object('admin.jpg')    
 obj.get(response_target: 'public/images/avatars/admin.jpg')
 user.avatar.attach(io: File.open("public/images/avatars/admin.jpg"), filename: "admin.jpg")
-end
+
 
 
 puts 'seeding categories & rooms...'
