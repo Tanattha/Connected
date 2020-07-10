@@ -1,5 +1,5 @@
 Aws.config.update({
-  region: 'us-east-1',
+  region: 'us-east-2',
   credentials: Aws::Credentials.new(ENV['BUCKETEER_AWS_ACCESS_KEY_ID'], ENV['BUCKETEER_AWS_SECRET_ACCESS_KEY']),
 })
 
