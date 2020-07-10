@@ -15,6 +15,32 @@ puts 'deleteing rooms...'
 RoomMessage.destroy_all
 puts 'deleteing rooms messages...'
 puts '.........'
+
+puts 'seeding categories & rooms...'
+  
+categories = [
+    {name: "General"},
+    {name: "Entertainments"},
+    {name: "Sports & Heath"},
+    {name: "Arts and Crafts"},
+    {name: "Bussiness & Marketing"},
+    {name: "Kids & Babies"},
+    {name: "Hobbies & Activities"},
+    {name: "Education"},
+    {name: "Computers & Gadgets"},
+    {name: "Travel"},
+    {name: "Home & Garden"},
+    {name: "Fictions & Comics"}
+]
+
+categories.each do |category|
+  Category.create(category)
+  Room.create(category)
+  end
+
+
+
+=begin
 puts 'seeding users...'
 
 10.times do
@@ -51,29 +77,9 @@ puts 'seeding an admin'
 
 
 
-puts 'seeding categories & rooms...'
-  
-categories = [
-    {name: "General"},
-    {name: "Entertainments"},
-    {name: "Sports & Heath"},
-    {name: "Arts and Crafts"},
-    {name: "Bussiness & Marketing"},
-    {name: "Kids & Babies"},
-    {name: "Hobbies & Activities"},
-    {name: "Education"},
-    {name: "Computers & Gadgets"},
-    {name: "Travel"},
-    {name: "Home & Garden"},
-    {name: "Fictions & Comics"}
-]
 
-categories.each do |category|
-  Category.create(category)
-  Room.create(category)
-  end
 
-  
+=begin
 puts 'seeding posts...'
 20.times do
   Post.create({
@@ -92,6 +98,6 @@ puts 'seeding comments...'
     body: Faker::Hipster.sentences.sample
   })
 end
-
+=end
 
 puts 'All Done!'
