@@ -23,8 +23,8 @@ user = User.create({
   password: '11223344',
   role: 1
 })
-  user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
-
+  #user.avatar.attach(io: File.open(Rails.root.join('public', 'images','avatars','admin.jpg')), filename: 'admin.jpg', content_type: 'image/jpg')
+  user.avatar.attach(params[:avatar])
 puts 'seeding categories & rooms...'
   
 categories = [
