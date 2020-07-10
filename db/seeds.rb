@@ -16,7 +16,8 @@ RoomMessage.destroy_all
 puts 'deleteing rooms messages...'
 puts '.........'
 puts 'seeding users...'
-20.times do
+
+10.times do
   user = User.create({
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
@@ -31,7 +32,7 @@ end
   #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
   #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
 
-
+=begin
 puts 'seeding an admin'
 
   user = User.create({
@@ -42,6 +43,7 @@ puts 'seeding an admin'
   password: '11223344',
   role: 1
 })
+=end
 #obj = s3.bucket('rails-connected-webapp').object('#{i}.jpg')   
   #obj.get(response_target: 'public/images/avatars/#{i}.jpg')
   #user.avatar.attach(io: File.open("public/images/avatars/#{i}.png"), filename: "#{i}.png")
@@ -73,19 +75,19 @@ categories.each do |category|
 
   
 puts 'seeding posts...'
-50.times do
+20.times do
   Post.create({
     category_id: Faker::Number.between(from: 1, to: 12),
-    user_id: Faker::Number.between(from: 1, to: 20),
+    user_id: Faker::Number.between(from: 1, to: 10),
     title: Faker::Company.catch_phrase,
     body: Faker::Quote.matz,
   })
 end
 
 puts 'seeding comments...'
-100.times do
+50.times do
   Comment.create({
-    user_id: Faker::Number.between(from: 1, to: 20),
+    user_id: Faker::Number.between(from: 1, to: 10),
     post_id: Faker::Number.between(from: 1, to: 20),
     body: Faker::Hipster.sentences.sample
   })
