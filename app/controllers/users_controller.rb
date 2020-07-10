@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :logged_in?
     skip_before_action :logged_in?, only: [:new, :create]
-    before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
   
     def new
         @user = User.new
@@ -47,10 +46,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         
     end
-
-    def set_s3_direct_post
-        @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
-      end
 
     def user_params
         params.require(:user).permit(:user_name, :password, :first_name, :last_name, :email, :avatar)
