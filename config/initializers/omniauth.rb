@@ -5,4 +5,4 @@ end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
     provider :heroku, ENV.fetch("HEROKU_OAUTH_ID"), ENV.fetch("HEROKU_OAUTH_SECRET")
-end
+  end
