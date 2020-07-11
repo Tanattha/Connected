@@ -20,7 +20,7 @@
                   <%= @user.user_name %>
                 </h4>
 
-                <% if current_user != @user %>
+                <% if logged_in? && current_user != @user %>
 
                 
                 <%= link_to 'Send a message &nbsp;<i class="fas fa-paper-plane"></i>'.html_safe, conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>

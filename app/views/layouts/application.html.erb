@@ -17,11 +17,15 @@
   <body>
    <%= render 'layouts/appnav' %>
    <%= yield :jumbotron %>
-   
+   <% if flash[:warning] %>
+   <div class="alert alert-warning text-center">
+     <%= flash[:warning] %>
+   </div>
+   <% end %>
       <div id="main" class="container pt-4">
         <%= yield %>
       </div>
-
+     
       <footer class="py-5 bg-primary">
         <div class="container">
           <p class="m-0 text-center text-white">Create by &copy; Tanattha Thuenim</p>
@@ -31,6 +35,7 @@
     </div>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <script src="https://kit.fontawesome.com/ba9302cd43.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

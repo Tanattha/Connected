@@ -4,27 +4,37 @@ class MessagesController < ApplicationController
     end
     
   def index
+    
     @conversations = Conversation.all
     @recipient = User.find_by_id(@conversation.recipient_id)
     @messages = @conversation.messages
-   
-    if @messages.length > 10
-     @over_ten = true
-     @messages = @messages[-10..-1]
-    end
-    if params[:m]
-     @over_ten = false
-     @messages = @conversation.messages
-    end
-    if @messages.last
-      if @messages.last.user_id != current_user.id
-     @messages.each do |msg|
-      msg.update(read: true)
-     end
+    if logged_in?
+      if !@messages.empty? && current_user != @conversation.recipient_id && current_user != @conversation.sender_id
+      redirect_to root_path
+      flash_warning("YOU CAN'T EDIT ON SOMEONE ELSE MESSAGES!")
+      else
+        if @messages.length > 10
+          @over_ten = true
+          @messages = @messages[-10..-1]
+        end
+        if params[:m]
+          @over_ten = false
+          @messages = @conversation.messages
+        end
+      if @messages.last
+        if @messages.last.user_id != current_user.id
+          @messages.each do |msg|
+          msg.update(read: true)
+          end
+        end
+      end
+      @message = @conversation.messages.new
+      end
+    else
+      redirect_to root_path
+      flash_warning("MUST LOGIN FIRST!")
     end
   end
-  @message = @conversation.messages.new
-   end
 
   def new
    @message = @conversation.messages.new

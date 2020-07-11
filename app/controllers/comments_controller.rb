@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def index
     redirect_to root_path
-    flash_warning("Sorry, page not found.")
+    flash_warning("SORRY, PAGE NOT FOUND")
   end
  
   def new 
@@ -22,12 +22,22 @@ class CommentsController < ApplicationController
       redirect_to post_path(@comment.post)
   end
 
-    def edit
-    @comment = Comment.find_by(id: params[:id])
+  def edit
+    if logged_in?
+      find_comment   
+      if current_user != find_comment.user
+          redirect_to root_path
+          flash_warning("YOU CAN'T EDIT ON SOMEONE ELSE POST!")
+      end
+    else
+      redirect_to root_path
+      flash_warning("MUST LOGIN FIRST!")
+    end
   end
 
   def show 
     find_comment
+    redirect_to post_path(@comment.post)
   end
 
   def update
