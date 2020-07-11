@@ -10,6 +10,7 @@ Connected is a place to let everyone connect to each other. Either through posts
 ## Live App
 https://rails-connected.herokuapp.com/
 
+
 ## Video Walkthrough
 
 Click here a video walkthrough: https://youtu.be/lFZFHlJxxW8
