@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   resources :rooms
   resources :room_messages
   
-  #get 'auth/google_oauth2/callback', to: 'omniauth#create'
+  get 'auth/google_oauth2/callback', to: 'omniauth#create'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   delete '/logout', to: 'sessions#destroy'
 
-  get "/auth/:provider/callback" , to: 'omniauth#create'
+ 
   
 end
