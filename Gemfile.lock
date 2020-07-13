@@ -96,6 +96,8 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    bootstrap-sass (2.3.0.1)
+      sass (~> 3.2)
     bootswatch (4.3.1)
       autoprefixer-rails (>= 6.0.3)
     builder (3.2.4)
@@ -355,6 +357,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.5.0)
+  bootstrap-sass (~> 2.3.0.1)
   bootswatch
   byebug
   capybara (>= 2.15)

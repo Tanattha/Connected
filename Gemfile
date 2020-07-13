@@ -41,6 +41,7 @@ gem 'dotenv-rails'
 gem 'thin'
 gem 'will_paginate', '~> 3.3.0'
 gem 'bootstrap', '~> 4.5.0'
+gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'sprockets', '3.7.2'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass', branch: 'v1.0beta'
 gem "aws-sdk-s3", require: false
