@@ -54,22 +54,20 @@
             <a class="nav-link dropdown-toggle" id="userDropdown" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">
               <%= image_tag current_user.avatar, class: 'avatar' if current_user.avatar %>  <%= current_user.user_name%>
-
-             
-
             </a>
+          
             <div class="nav-dropdown dropdown-menu dropdown-menu-right" >
              
-              <%= link_to "View Profile", user_path(current_user), class: "dropdown-item " %>
-              <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item " %>
+              <%= link_to "View Profile", user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to "Edit Profile", edit_user_path(current_user), class: 'dropdown-item' %>
 
               <div class="dropdown-divider"></div>
 
               <%= link_to('Logout', {:controller => "sessions", :action => 'destroy'}, :method => :delete , class: "dropdown-item") %>
             </div>
 
-
           </li>
+         
         </ul>
     </div>
     <% else %>
@@ -86,7 +84,5 @@
   </div>
 </nav>
 <br>
-<div>
 
-  
 </nav>

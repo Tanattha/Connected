@@ -29,7 +29,7 @@
                   <% end %>
 
                   <div class="text-center">
-                    <% if conversation.sender_id != current_user.id && conversation.messages.where(read: false) %>
+                    <% if conversation.sender_id != current_user.id %>
                     <% if conversation.messages.where(read: false).size > 0 %>
                     <span class="badge badge-pill badge-danger ml-2 float">
                       <%= conversation.messages.where(read: false).size %>
