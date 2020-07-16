@@ -3,7 +3,6 @@ module ApplicationHelper
         !!session[:user_id] 
     end
 
-    
     def current_user
       @current_user ||= User.find_by_id(session[:user_id])  if  !!session[:user_id]
     end
@@ -23,6 +22,7 @@ module ApplicationHelper
     def flash_warning(text="Something went wrong.")
       flash[:warning] = "#{text}"
     end
+
  
     def display_avatar(user_id)
       user = User.find_by_id(user_id) 

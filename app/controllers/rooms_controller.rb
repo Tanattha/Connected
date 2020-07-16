@@ -42,7 +42,6 @@ class RoomsController < ApplicationController
   
     def update
       if @room.update_attributes(room_params)
-        flash[:success] = "Room #{@room.name} updated successfully"
       else
         render 'edit'
       end

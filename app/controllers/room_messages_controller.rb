@@ -7,6 +7,7 @@ class RoomMessagesController < ApplicationController
         RoomMessage.create(
           user: current_user,
           room: @room,
+          #message: params[:room_message] && params[:room_message][:message]
           message: params.dig(:room_message, :message)
         )
 
@@ -20,6 +21,7 @@ class RoomMessagesController < ApplicationController
     protected
   
     def load_entities
+     # @room = Room.find params[:room_message] && params[:room_message][:room_id]
       @room = Room.find params.dig(:room_message, :room_id)
     end
   end
