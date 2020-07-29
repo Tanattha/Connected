@@ -11,7 +11,7 @@ Connected is a place to let everyone connect to each other. Either through posts
 https://rails-connected.herokuapp.com/
 
 ## Diagram
-[Connected/db](connected_diagram.png)
+[Check out an application diagram here](db/connected_diagram.png)
 
 ## Video Walkthrough
 
