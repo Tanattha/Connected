@@ -10,6 +10,8 @@ Connected is a place to let everyone connect to each other. Either through posts
 ## Live App
 https://rails-connected.herokuapp.com/
 
+## Diagram
+[Connected/db](connected_diagram.png)
 
 ## Video Walkthrough
 
