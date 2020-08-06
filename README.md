@@ -7,7 +7,7 @@ Welcome to Connected! All-in-one community web application! This app is fully fu
 
 Connected is a place to let everyone connect to each other. Either through posts, comments, messages or chat rooms.
 
-<img src="./public/images/example.png" width="800" height="400" />
+<img src="./public/images/example.png" width="640" height="400" />
 
 ## Live App
 https://rails-connected.herokuapp.com/
