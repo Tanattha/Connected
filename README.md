@@ -13,11 +13,11 @@ Connected is a place to let everyone connect to each other. Either through posts
 https://rails-connected.herokuapp.com/
 
 ## Diagram
-[Check out an application diagram here](db/connected_diagram.png)
+[CLICK HERE](db/connected_diagram.png)
 
 ## Video Walkthrough
 
-Click here a video walkthrough: https://youtu.be/lFZFHlJxxW8
+[CLICK HERE](https://youtu.be/lFZFHlJxxW8)
 
 ## Installation
 
