@@ -1,6 +1,6 @@
 # Connected
 
-Welcome to Connected! All-in-one community web application! This app is fully functional MVC and CRUD operations, using Ruby on Rails and display by HTML, CSS, JS and bootstraped. 
+Welcome to Connected! It's an all-in-one community web application with posts, comments, direct messages, avatars and chat room feature. Relationships and validations included. CONNECTED provides a user authentication, including signup, login, logout, password and login with a third party, Google.
 
 
 ## Overview
