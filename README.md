@@ -1,6 +1,6 @@
 # Connected
 
-Welcome to Connected! It's an all-in-one community web application with posts, comments, direct messages, avatars and chat room features. Relationships and validations included. CONNECTED provides a user authentication, including signup, login, logout, password and login with a third party, Google.
+Welcome to Connected! It's an all-in-one community web application with posts, comments, direct messages, avatars and chat room features. Relationships and validations included. CONNECTED provides a user authentication, including signup, login, logout, password and login with Google as a third party.
 
 
 ## Overview
