@@ -9,9 +9,9 @@ Connected is a place to let everyone connect to each other. Either through posts
 
 <img src="./public/images/example.png" width="640" height="400" />
 
-## Live App
+<!-- ## Live App
 https://rails-connected.herokuapp.com/
-
+ -->
 ## Diagram
 [CLICK HERE](db/connected_diagram.png)
 
